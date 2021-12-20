@@ -1,0 +1,47 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "Microsoft Corporation",
+      "copyrightText": "Copyright (C) {companyName}. All rights reserved.",
+      "xmlHeader": false,
+      "documentInterfaces": true,
+      "documentExposedElements": false,
+      "documentInternalElements": false,
+      "documentPrivateElements": false,
+      "documentPrivateFields": false,
+      "excludeFromPunctuationCheck": [
+        "example"
+      ]
+    },
+    "indentation": {
+      "indentationSize": 4,
+      "tabSize": 4
+    },
+    "orderingRules": {
+      "elementOrder": [
+        "constant",
+        "kind",
+        "accessibility",
+        "static",
+        "readonly"
+      ],
+      "usingDirectivesPlacement": "outsideNamespace"
+    },
+    "namingRules": {
+      "allowCommonHungarianPrefixes": false
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "allow",
+      "allowConsecutiveUsings": true
+    },
+    "spacingRules": {
+    },
+    "readabilityRules": {
+      "allowBuiltInTypeAliases": true
+    },
+    "maintainabilityRules": {
+      "topLevelTypes": [ "interface", "class" ]
+    }
+  }
+}
