@@ -19,12 +19,14 @@
         {
             var jsonString = JsonSerializer.Serialize(messageObject);
             var message = new Message(Encoding.UTF8.GetBytes(jsonString));
+            message.UserProperties["messageType"] = typeof(T).Name;
             return topicClient.SendAsync(message);
         }
 
         public Task Publish(string rawMessage)
         {
             var message = new Message(Encoding.UTF8.GetBytes(rawMessage));
+            message.UserProperties["messageType"] = "RawMessage";
             return topicClient.SendAsync(message);
         }
     }

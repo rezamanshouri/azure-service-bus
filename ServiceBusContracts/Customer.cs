@@ -7,7 +7,7 @@
             get; set;
         }
 
-        public string lastName
+        public string LastName
         {
             get; set;
         }
