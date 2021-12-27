@@ -7,7 +7,7 @@ namespace ServiceBusProducer
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
-    using ServiceBusProducer.Services;
+    using ServiceBusProducer.Publish;
 
     public class Startup
     {

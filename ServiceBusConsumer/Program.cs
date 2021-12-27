@@ -1,12 +1,21 @@
 ﻿namespace ServiceBusProducer
 {
-    using System;
+    using System.Threading.Tasks;
+
+    using Microsoft.Extensions.Hosting;
+
+    using ServiceBusConsumer;
 
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var host = CreateHostBuilder(args).Build();
+            await host.RunAsync();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+               Host.CreateDefaultBuilder(args)
+                   .ConfigureServices((hostBuilderContext, serviceCollection) => new Startup(hostBuilderContext.Configuration).ConfigureServices(serviceCollection));
     }
 }

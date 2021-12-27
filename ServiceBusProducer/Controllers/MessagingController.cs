@@ -4,7 +4,7 @@
 
     using ServiceBusContracts;
 
-    using ServiceBusProducer.Services;
+    using ServiceBusProducer.Publish;
 
     [Route("publish")]
     [ApiController]
