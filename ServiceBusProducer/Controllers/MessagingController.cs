@@ -2,19 +2,39 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
+    using ServiceBusContracts;
+
+    using ServiceBusProducer.Services;
+
     [Route("publish")]
     [ApiController]
     public class MessagingController : ControllerBase
     {
-        [HttpGet("customer")]
-        public IActionResult PublishCustomer()
+        private readonly IMessagePublisher messagePublisher;
+
+        public MessagingController(IMessagePublisher messagePublisher)
         {
+            this.messagePublisher = messagePublisher;
+        }
+
+        [HttpPost("customer")]
+        public IActionResult PublishCustomer([FromBody] Customer customer)
+        {
+            this.messagePublisher.Publish(customer);
             return Ok();
         }
 
-        [HttpGet("order")]
-        public IActionResult PublishOrder()
+        [HttpPost("order")]
+        public IActionResult PublishOrder([FromBody] Order order)
         {
+            this.messagePublisher.Publish(order);
+            return Ok();
+        }
+
+        [HttpPost("text")]
+        public IActionResult PublishRawMessage([FromBody] string rawMessage)
+        {
+            this.messagePublisher.Publish(rawMessage);
             return Ok();
         }
     }

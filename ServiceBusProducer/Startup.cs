@@ -2,9 +2,12 @@ namespace ServiceBusProducer
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Azure.ServiceBus;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+
+    using ServiceBusProducer.Services;
 
     public class Startup
     {
@@ -22,6 +25,13 @@ namespace ServiceBusProducer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Should be singleton
+            services.AddSingleton<ITopicClient>(
+                x => new TopicClient(
+                    Configuration.GetValue<string>("ServiceBus:ConnectionString"),
+                    Configuration.GetValue<string>("ServiceBus:TopicName")));
+            services.AddSingleton<IMessagePublisher, MessagePublisher>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,10 +55,7 @@ namespace ServiceBusProducer
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapRazorPages();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

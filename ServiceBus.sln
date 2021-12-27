@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusConsumer", "ServiceBusConsumer\ServiceBusConsumer.csproj", "{32418256-6CBB-4FD5-9947-00D3B452B7F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusProducer", "ServiceBusProducer\ServiceBusProducer.csproj", "{A10F10F0-624A-43EA-8F8F-543E656C8024}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusProducer", "ServiceBusProducer\ServiceBusProducer.csproj", "{A10F10F0-624A-43EA-8F8F-543E656C8024}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusContracts", "ServiceBusContracts\ServiceBusContracts.csproj", "{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A10F10F0-624A-43EA-8F8F-543E656C8024}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A10F10F0-624A-43EA-8F8F-543E656C8024}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A10F10F0-624A-43EA-8F8F-543E656C8024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
