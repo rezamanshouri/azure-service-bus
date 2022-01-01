@@ -8,6 +8,7 @@ namespace ServiceBusProducer
     using Microsoft.Extensions.Hosting;
 
     using ServiceBusProducer.Publish;
+    using ServiceBusProducer.Services;
 
     public class Startup
     {

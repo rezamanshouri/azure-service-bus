@@ -23,21 +23,23 @@
         {
             subscriptionClient.RegisterMessageHandler((message, token) =>
             {
-                var order = new Order();
                 try
                 {
-                    order = JsonSerializer.Deserialize<Order>(Encoding.UTF8.GetString(message.Body));
+                    var order = JsonSerializer.Deserialize<Order>(Encoding.UTF8.GetString(message.Body));
+
+                    // Do what you need with the message here
+                    System.Console.WriteLine($"New order: {order.Id} {order.Name}");
+
+                    // 'message.SystemProperties.LockToken' tells the Service Bus to lock this message and don't send it to anyone else
+                    return subscriptionClient.CompleteAsync(message.SystemProperties.LockToken);
                 }
                 catch (System.Exception)
                 {
-                    System.Console.WriteLine("Exception was thrown deserializing message");
+                    // Release the lock if the message is not 'completed', this allows the message to be received by this or other receivers ('Max delivery count' is set to >1).
+                    // Without abandoning, the message will still be received 'Max delivery count' times every 'Message lock duration' seconds.
+                    return subscriptionClient.AbandonAsync(message.SystemProperties.LockToken);
                 }
 
-                // Do what you need with the message here
-                System.Console.WriteLine($"New order: {order.Id} {order.Name}");
-
-                // 'message.SystemProperties.LockToken' tells the Service Bus to lock this message and don't send it to anyone else
-                return subscriptionClient.CompleteAsync(message.SystemProperties.LockToken);
             }, new MessageHandlerOptions(args => Task.CompletedTask)
             {
                 // This allows re-processing a message if processing one message failed
