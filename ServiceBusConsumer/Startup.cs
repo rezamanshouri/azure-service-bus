@@ -1,6 +1,7 @@
 ﻿namespace ServiceBusConsumer
 {
-    using Microsoft.Azure.ServiceBus;
+    using Azure.Messaging.ServiceBus;
+
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -20,10 +21,7 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ISubscriptionClient>(x => new SubscriptionClient(
-            Configuration.GetValue<string>("ServiceBus:ConnectionString"),
-            Configuration.GetValue<string>("ServiceBus:TopicName"),
-            Configuration.GetValue<string>("ServiceBus:SubscriptionName")));
+            services.AddSingleton<ServiceBusClient>(x => new ServiceBusClient(Configuration.GetValue<string>("ServiceBus:ConnectionString")));
 
             services.AddHostedService<ConsumerService>();
         }

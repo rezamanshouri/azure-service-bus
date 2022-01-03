@@ -1,8 +1,9 @@
 namespace ServiceBusProducer
 {
+    using Azure.Messaging.ServiceBus;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Azure.ServiceBus;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
@@ -28,10 +29,7 @@ namespace ServiceBusProducer
             services.AddControllers();
 
             // Should be singleton
-            services.AddSingleton<ITopicClient>(
-                x => new TopicClient(
-                    Configuration.GetValue<string>("ServiceBus:ConnectionString"),
-                    Configuration.GetValue<string>("ServiceBus:TopicName")));
+            services.AddSingleton<ServiceBusClient>(x => new ServiceBusClient(Configuration.GetValue<string>("ServiceBus:ConnectionString")));
             services.AddSingleton<IMessagePublisher, MessagePublisher>();
         }
 
