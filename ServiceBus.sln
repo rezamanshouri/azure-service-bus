@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusConsumer", "Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusProducer", "ServiceBusProducer\ServiceBusProducer.csproj", "{A10F10F0-624A-43EA-8F8F-543E656C8024}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusContracts", "ServiceBusContracts\ServiceBusContracts.csproj", "{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusContracts", "ServiceBusContracts\ServiceBusContracts.csproj", "{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusProducer.Tests", "ServiceBusProducer.Tests\ServiceBusProducer.Tests.csproj", "{9DD3DC90-C012-4273-9F46-8E7893E63E1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58D73743-9D86-4E5A-8D7C-74D7A008C3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD3DC90-C012-4273-9F46-8E7893E63E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD3DC90-C012-4273-9F46-8E7893E63E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD3DC90-C012-4273-9F46-8E7893E63E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD3DC90-C012-4273-9F46-8E7893E63E1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
