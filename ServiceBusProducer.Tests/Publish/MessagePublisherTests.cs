@@ -17,7 +17,6 @@ namespace ServiceBusProducer.Tests.Publish
 
     public class MessagePublisherTests
     {
-
         private readonly MessagePublisher messagePublisher;
         private readonly Mock<ServiceBusClient> serviceBusClient;
         private readonly Mock<ServiceBusSender> serviceBusSender;
