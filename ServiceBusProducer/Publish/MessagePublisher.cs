@@ -27,7 +27,7 @@
             // Application properties can be used to add filters at subscription level.
             // To do so, navigate to 'Correlation Filter' -> 'CUSTOM PROPERTIES'
             message.ApplicationProperties["messageType"] = typeof(T).Name;
-            
+
             return serviceBusSender.SendMessageAsync(message);
         }
 
