@@ -7,5 +7,7 @@
         Task Publish<T>(T messageObject);
 
         Task Publish(string rawMessage);
+
+        Task PublishWithSession<T>(T messageObject, string sessionId);
     }
 }

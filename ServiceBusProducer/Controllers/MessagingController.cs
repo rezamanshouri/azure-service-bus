@@ -1,5 +1,7 @@
 ﻿namespace ServiceBusProducer.Controllers
 {
+    using System.Collections.Generic;
+
     using Microsoft.AspNetCore.Mvc;
 
     using ServiceBusContracts;
@@ -15,6 +17,25 @@
         public MessagingController(IMessagePublisher messagePublisher)
         {
             this.messagePublisher = messagePublisher;
+        }
+
+        [HttpGet("publish-messages-with-session")]
+        public IActionResult PublishMultipleMessagesWithSession()
+        {
+            var costomers = new List<Customer> {
+                new Customer { FirstName = "1" },
+                new Customer { FirstName = "2" },
+                new Customer { FirstName = "3" },
+                new Customer { FirstName = "4" },
+                new Customer { FirstName = "5" },
+             };
+
+            foreach (var c in costomers)
+            {
+                this.messagePublisher.PublishWithSession(c, "some_session_ID");
+            }
+
+            return Ok();
         }
 
         [HttpPost("customer")]

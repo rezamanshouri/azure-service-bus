@@ -37,5 +37,23 @@
             message.ApplicationProperties["messageType"] = "RawMessage";
             return serviceBusSender.SendMessageAsync(message);
         }
+
+        // Order of messages received from a topic subscription is not necessarily the same order by which they were sent to the topic.
+        // Messages with the same session ID, however, will be received in the same order they were sent to the topic.
+        // Note that:
+        //   - The topic subscription must be session-enabled for this ordering to happen.
+        //   - Once a topic subscription is session-enabled, messages without a session ID can't be received.
+        public Task PublishWithSession<T>(T messageObject, string sessionId)
+        {
+            var jsonString = JsonSerializer.Serialize(messageObject);
+            var message = new ServiceBusMessage(jsonString)
+            {
+                SessionId = sessionId
+            };
+
+            message.ApplicationProperties["messageType"] = typeof(T).Name;
+
+            return serviceBusSender.SendMessageAsync(message);
+        }
     }
 }

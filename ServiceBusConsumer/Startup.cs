@@ -23,7 +23,8 @@
         {
             services.AddSingleton<ServiceBusClient>(x => new ServiceBusClient(Configuration.GetValue<string>("ServiceBus:ConnectionString")));
 
-            services.AddHostedService<ConsumerService>();
+            //services.AddHostedService<ConsumerService>();
+            services.AddHostedService<SessionBasedConsumerService>();
         }
     }
 }
